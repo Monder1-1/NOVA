@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#10b981">
+  <title>NOVA — نوفا</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="brand">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9Z"/></svg>
+      </div>
+      <span class="brand-title">NOVA</span>
+    </div>
+    <button id="themeToggleBtn" class="icon-btn" aria-label="الإعدادات">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    </button>
+  </header>
+
+  <!-- Main Content Container -->
+  <main id="appContent" class="app-content">
+
+    <!-- HOME VIEW -->
+    <section id="view-home" class="view active-view">
+      <div class="user-greeting">
+        <div>
+          <h2 id="greetingText">مرحباً بك،</h2>
+          <p id="currentDateText" class="subtitle">...</p>
+        </div>
+        <div class="streak-badge">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3.5z"/></svg>
+          <span id="streakCount">0</span> يوم
+        </div>
+      </div>
+
+      <!-- Progress Card -->
+      <div class="card progress-card">
+        <div class="progress-info">
+          <span>إنجاز اليوم</span>
+          <span id="homeProgressPercent">0%</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div id="homeProgressBar" class="progress-bar-fill" style="width: 0%;"></div>
+        </div>
+        <div class="progress-stats">
+          <div>المهام المكتملة: <strong id="completedTasksCount">0</strong></div>
+          <div>المهمة القادمة: <strong id="nextTaskTitle">لا توجد</strong></div>
+        </div>
+      </div>
+
+      <!-- Quick Sections Grid -->
+      <div class="section-title">الأقسام الرئيسية</div>
+      <div class="grid-menu">
+        <button class="grid-card theme-tasks" onclick="navTo('tasks')">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          <span>مهامي اليوم</span>
+        </button>
+        <button class="grid-card theme-ibadah" onclick="navTo('ibadah')">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
+          <span>العبادة</span>
+        </button>
+        <button class="grid-card theme-sports" onclick="navTo('sports')">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h1a4 4 0 0 1 4 4 4 4 0 0 1-4 4H2"/><path d="M6 12h12"/><path d="M6 5v14"/><path d="M18 5v14"/></svg>
+          <span>الرياضة</span>
+        </button>
+        <button class="grid-card theme-science" onclick="navTo('science')">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+          <span>العلوم</span>
+        </button>
+        <button class="grid-card theme-history" onclick="navTo('history')">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <span>التاريخ</span>
+        </button>
+        <button class="grid-card theme-arabic" onclick="navTo('arabic')">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <span>الفصحى</span>
+        </button>
+        <button class="grid-card theme-stats" onclick="navTo('stats')">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          <span>الإحصائيات</span>
+        </button>
+        <button class="grid-card theme-notes" onclick="navTo('notes')">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          <span>ملاحظاتي</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- TASKS VIEW -->
+    <section id="view-tasks" class="view">
+      <div class="view-header">
+        <h3>قائمة المهام اليومية</h3>
+        <button class="btn-primary-sm" onclick="openAddTaskModal()">+ إضافة مهمة</button>
+      </div>
+      <div id="tasksList" class="tasks-list"></div>
+    </section>
+
+    <!-- IBADAH VIEW -->
+    <section id="view-ibadah" class="view theme-ibadah-bg">
+      <div class="view-header">
+        <h3>قسم العبادة</h3>
+        <span class="location-badge" id="cityBadge">الزاوية، ليبيا</span>
+      </div>
+
+      <!-- Prayer Times -->
+      <div class="card ibadah-card">
+        <h4>مواقيت الصلاة اليوم</h4>
+        <div id="prayerTimesGrid" class="prayer-grid"></div>
+      </div>
+
+      <!-- Quran Tracker -->
+      <div class="card ibadah-card">
+        <h4>متابعة قراءة القرآن</h4>
+        <div class="form-group">
+          <label>آخر صفحة قرأتها:</label>
+          <div class="inline-input">
+            <input type="number" id="quranPageInput" min="1" max="604" placeholder="1-604">
+            <button class="btn-primary-sm" onclick="saveQuranProgress()">حفظ</button>
+          </div>
+        </div>
+        <div class="progress-bar-bg margin-top-sm">
+          <div id="quranProgressBar" class="progress-bar-fill" style="width: 0%;"></div>
+        </div>
+        <div class="subtitle text-left margin-top-xs" id="quranPercentText">0% من الختمة</div>
+      </div>
+
+      <!-- Adhkar -->
+      <div class="card ibadah-card">
+        <h4>الأذكار اليومية</h4>
+        <div class="tab-buttons">
+          <button class="tab-btn active" onclick="switchAdhkar('sabah')">الصباح</button>
+          <button class="tab-btn" onclick="switchAdhkar('masaa')">المساء</button>
+          <button class="tab-btn" onclick="switchAdhkar('sleep')">النوم</button>
+        </div>
+        <div id="adhkarContainer" class="adhkar-list"></div>
+      </div>
+    </section>
+
+    <!-- SPORTS VIEW -->
+    <section id="view-sports" class="view theme-sports-bg">
+      <div class="view-header">
+        <h3>الرياضة واللياقة</h3>
+      </div>
+
+      <!-- Workout Player Card -->
+      <div class="card sports-card" id="workoutPlayerCard">
+        <h4 id="workoutTitle">تمارين اليوم المتكاملة</h4>
+        <p id="workoutDesc" class="subtitle">تمارين قوة ومرونة تناسب جميع المستويات.</p>
+
+        <div id="workoutActiveArea" class="workout-active-area hidden">
+          <div class="exercise-step-badge" id="exStepBadge">تمرين 1 / 6</div>
+          <h2 id="exName">اسم التمرين</h2>
+          <p id="exInstructions">شرح التمرين والتكرارات المطلوب إنجازها.</p>
+          <div class="timer-display" id="timerDisplay">00:30</div>
+          <div class="workout-controls">
+            <button class="btn-action" id="timerToggleBtn" onclick="toggleTimer()">تفعيل المؤقت</button>
+            <button class="btn-primary-sm" onclick="nextExercise()">التالي</button>
+          </div>
+        </div>
+
+        <button id="startWorkoutBtn" class="btn-primary-block" onclick="startWorkout()">ابدأ التمرين الآن</button>
+      </div>
+
+      <!-- Sports Articles / Categories -->
+      <div class="card sports-card">
+        <h4>مكتبة المعرفة الرياضية</h4>
+        <div class="category-pills">
+          <span class="pill">القوة</span>
+          <span class="pill">الجري</span>
+          <span class="pill">اللياقة</span>
+          <span class="pill">الإحماء</span>
+          <span class="pill">المرونة</span>
+        </div>
+        <div class="article-preview margin-top-sm">
+          <strong>أهمية الإحماء قبل التمرين:</strong>
+          <p class="subtitle">يقلل الإحماء من مخاطر الإصابات العضلية ويزيد من تدفق الدم للنسيج العضلي بنسبة تصل إلى 30%.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCIENCE VIEW -->
+    <section id="view-science" class="view theme-science-bg">
+      <div class="view-header">
+        <h3>العلوم والمعرفة</h3>
+      </div>
+      <div class="search-box">
+        <input type="text" id="scienceSearchInput" placeholder="بحث في المقالات والمفاهيم العلمية..." oninput="filterScience()">
+      </div>
+      <div id="scienceArticlesList" class="articles-grid"></div>
+    </section>
+
+    <!-- HISTORY VIEW -->
+    <section id="view-history" class="view theme-history-bg">
+      <div class="view-header">
+        <h3>التاريخ والحضارات</h3>
+      </div>
+      <div class="search-box">
+        <input type="text" id="historySearchInput" placeholder="بحث في الأحداث والشخصيات التاريخية..." oninput="filterHistory()">
+      </div>
+      <div id="historyArticlesList" class="articles-grid"></div>
+    </section>
+
+    <!-- ARABIC VIEW -->
+    <section id="view-arabic" class="view theme-arabic-bg">
+      <div class="view-header">
+        <h3>اللغة العربية الفصحى</h3>
+      </div>
+      <div class="card arabic-card">
+        <h4>تحدي اليوم اللغوي</h4>
+        <p class="challenge-box">"تحدث أو اكتب فقرة قصيرة عن طموحاتك لهذا اليوم باللغة العربية الفصحى المتقنة."</p>
+        <textarea id="arabicChallengeInput" placeholder="اكتب إجابتك هنا..." rows="3"></textarea>
+        <button class="btn-primary-sm margin-top-xs" onclick="saveArabicChallenge()">حفظ التحدي</button>
+      </div>
+
+      <div class="card arabic-card">
+        <h4>مفردات وثروة لغوية</h4>
+        <div id="vocabList" class="vocab-list"></div>
+      </div>
+    </section>
+
+    <!-- STATS VIEW -->
+    <section id="view-stats" class="view theme-stats-bg">
+      <div class="view-header">
+        <h3>الإحصائيات والتقدم</h3>
+      </div>
+
+      <div class="stats-overview-grid">
+        <div class="stat-box">
+          <span class="stat-num" id="statWeeklyAvg">0%</span>
+          <span class="stat-label">متوسط الأسبوع</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num" id="statActiveDays">0</span>
+          <span class="stat-label">أيام نشطة</span>
+        </div>
+      </div>
+
+      <!-- Calendar -->
+      <div class="card stats-card">
+        <h4>تقويم الإنجاز الشهري</h4>
+        <div id="monthCalendar" class="calendar-grid"></div>
+      </div>
+    </section>
+
+    <!-- NOTES VIEW -->
+    <section id="view-notes" class="view theme-notes-bg">
+      <div class="view-header">
+        <h3>الملاحظات</h3>
+        <button class="btn-primary-sm" onclick="addNewNote()">+ ملاحظة جديدة</button>
+      </div>
+      <div id="notesContainer" class="notes-grid"></div>
+    </section>
+
+    <!-- SETTINGS VIEW -->
+    <section id="view-settings" class="view">
+      <div class="view-header">
+        <h3>إعدادات التطبيق</h3>
+      </div>
+
+      <div class="card settings-card">
+        <div class="form-group">
+          <label>اسم المستخدم:</label>
+          <input type="text" id="settingUserName" placeholder="أدخل اسمك">
+        </div>
+        <div class="form-group">
+          <label>المدينة (لحساب مواقيت الصلاة):</label>
+          <select id="settingCity">
+            <option value="Zawiya">الزاوية (ليبيا)</option>
+            <option value="Tripoli">طرابلس (ليبيا)</option>
+            <option value="Benghazi">بنغازي (ليبيا)</option>
+            <option value="Cairo">القاهرة (مصر)</option>
+            <option value="Riyadh">الرياض (السعودية)</option>
+          </select>
+        </div>
+        <button class="btn-primary-block" onclick="saveSettings()">حفظ الإعدادات</button>
+      </div>
+
+      <div class="card settings-card danger-zone">
+        <h4>إعادة ضبط البيانات</h4>
+        <p class="subtitle">سيتم مسح جميع المهام، السجلات، والملاحظات المخزنة محلياً.</p>
+        <button class="btn-danger-block" onclick="confirmResetAllData()">مسح جميع البيانات وإعادة الضبط</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Confirm Modal -->
+  <div id="confirmModal" class="modal-overlay hidden">
+    <div class="modal-box">
+      <h4 id="modalTitle">تأكيد الإجراء</h4>
+      <p id="modalBody">هل أنت أؤكد إكمال هذه المهمة؟</p>
+      <div class="modal-actions">
+        <button id="modalConfirmBtn" class="btn-primary-sm">تأكيد</button>
+        <button id="modalCancelBtn" class="btn-secondary-sm" onclick="closeModal()">إلغاء</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" onclick="navTo('home')" id="nav-home">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>الرئيسية</span>
+    </button>
+    <button class="nav-item" onclick="navTo('tasks')" id="nav-tasks">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      <span>المهام</span>
+    </button>
+    <button class="nav-item" onclick="navTo('ibadah')" id="nav-ibadah">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
+      <span>العبادة</span>
+    </button>
+    <button class="nav-item" onclick="navTo('sports')" id="nav-sports">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h1a4 4 0 0 1 4 4 4 4 0 0 1-4 4H2"/><path d="M6 12h12"/><path d="M6 5v14"/><path d="M18 5v14"/></svg>
+      <span>الرياضة</span>
+    </button>
+    <button class="nav-item" onclick="navTo('settings')" id="nav-settings">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      <span>الإعدادات</span>
+    </button>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "NOVA — نوفا",
+  "short_name": "NOVA",
+  "description": "تطبيقك الشخصي المتكامل لتطوير العبادة، الرياضة، المعرفة واللغة.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#090d16",
+  "theme_color": "#10b981",
+  "orientation": "portrait",
+  "dir": "rtl",
+  "lang": "ar",
+  "icons": [
+    {
+      "src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='120' fill='%23090d16'/><path d='M256 64L320 192L448 256L320 320L256 448L192 320L64 256L192 192Z' fill='%2310b981'/></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
